@@ -15,17 +15,25 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # 18に変更
-          cache: 'npm'
+          node-version: '18'  # 18を強制
+          cache: 'npm'       # キャッシュを有効化（後でクリア）
 
-      - name: Clear previous Node.js environment
+      - name: Remove default Node.js
         run: |
+          sudo apt-get update
+          sudo apt-get remove -y nodejs
+          sudo apt-get remove -y npm
           sudo rm -rf /usr/local/bin/node
           sudo rm -rf /usr/local/bin/npm
           sudo rm -rf /usr/local/lib/node_modules
 
       - name: Clear npm cache
         run: npm cache clean --force
+
+      - name: Install Node.js and npm
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # 再度18をインストール
 
       - name: Install dependencies
         run: |
