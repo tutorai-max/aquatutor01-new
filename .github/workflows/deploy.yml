@@ -12,11 +12,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20.0.0'
-          cache: 'npm'
+      - name: Check initial Node.js version
+        run: node -v
 
       - name: Remove default Node.js
         run: |
@@ -26,6 +23,15 @@ jobs:
           sudo rm -rf /usr/local/bin/node
           sudo rm -rf /usr/local/bin/npm
           sudo rm -rf /usr/local/lib/node_modules
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Check Node.js version after setup
+        run: node -v
 
       - name: Clear npm cache
         run: npm cache clean --force
