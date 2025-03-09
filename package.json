@@ -1,0 +1,33 @@
+{
+  "name": "geminichatbot",
+  "version": "1.0.0",
+  "description": "AquaTuterAI - 新人営業マン向けAIアシスタント（Vertex AIとGemini APIを使用）",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "ai",
+    "chatbot",
+    "vertexai",
+    "gemini",
+    "sales-training"
+  ],
+  "author": "Shiki",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/vertexai": "^1.9.3",
+    "@google/generative-ai": "^0.22.0",
+    "axios": "^1.8.2",
+    "chalk": "^4.1.2",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "googleapis": "^128.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
