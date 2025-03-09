@@ -15,7 +15,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'  # 22に変更
+          node-version: '22'
+          cache: 'npm'  # npmキャッシュをクリア
+
+      - name: Clear npm cache
+        run: npm cache clean --force
 
       - name: Install dependencies
         run: |
