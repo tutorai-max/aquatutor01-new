@@ -15,15 +15,21 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
-          cache: 'npm'  # npmキャッシュをクリア
+          node-version: '18'  # 18に変更
+          cache: 'npm'
+
+      - name: Clear previous Node.js environment
+        run: |
+          sudo rm -rf /usr/local/bin/node
+          sudo rm -rf /usr/local/bin/npm
+          sudo rm -rf /usr/local/lib/node_modules
 
       - name: Clear npm cache
         run: npm cache clean --force
 
       - name: Install dependencies
         run: |
-          npm install -g firebase-tools
+          npm install -g firebase-tools@latest
           cd functions
           npm install
 
