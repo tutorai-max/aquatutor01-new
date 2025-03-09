@@ -15,8 +15,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # 18を強制
-          cache: 'npm'       # キャッシュを有効化（後でクリア）
+          node-version: '18'
+          cache: 'npm'
 
       - name: Remove default Node.js
         run: |
@@ -29,11 +29,6 @@ jobs:
 
       - name: Clear npm cache
         run: npm cache clean --force
-
-      - name: Install Node.js and npm
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'  # 再度18をインストール
 
       - name: Install dependencies
         run: |
